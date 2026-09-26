@@ -3,914 +3,1138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff003c">
 
-<title>SYSTEM HANS IA - Sensi FF</title>
+<title>SYSTEM HANS IA 2.0 - Sensis FF</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial Black,Arial,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    background:
-        radial-gradient(circle at top,#26000d 0,#0c0c0c 45%);
-    color:#fff;
-    min-height:100vh;
+  background:#080808;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
 }
 
-.top{
-    background:linear-gradient(135deg,#ff003c,#b8002c);
-    padding:18px 15px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:99;
-    box-shadow:0 4px 20px rgba(255,0,60,.35);
+header{
+  background:linear-gradient(135deg,#ff003c,#850020);
+  padding:24px 15px;
+  text-align:center;
+  box-shadow:0 0 25px #ff003c55;
 }
 
-.top h1{
-    font-size:20px;
+.logo{
+  font-size:28px;
+  font-weight:900;
 }
 
-.top p{
-    font-family:Arial,sans-serif;
-    font-size:11px;
-    margin-top:5px;
-    opacity:.85;
+.logo span{
+  color:#fff;
+}
+
+header p{
+  margin-top:7px;
+  color:#eee;
+  font-size:14px;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
-}
-
-.search{
-    padding:15px;
-}
-
-.search input{
-    width:100%;
-    padding:15px;
-    border-radius:14px;
-    border:2px solid #292929;
-    background:#151515;
-    color:#fff;
-    outline:none;
-    font-family:Arial,sans-serif;
-    font-size:14px;
-}
-
-.search input:focus{
-    border-color:#ff003c;
-    box-shadow:0 0 15px rgba(255,0,60,.2);
-}
-
-.controls{
-    display:flex;
-    gap:8px;
-    padding:0 15px 10px;
-    overflow-x:auto;
-}
-
-.controls button{
-    white-space:nowrap;
-    border:1px solid #333;
-    background:#171717;
-    color:#fff;
-    padding:10px 14px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.controls button.active,
-.controls button:hover{
-    background:#ff003c;
-    border-color:#ff003c;
-}
-
-.device{
-    margin:5px 15px 10px;
-    background:#151515;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:12px;
-    font-family:Arial,sans-serif;
-    font-size:12px;
-}
-
-.device strong{
-    color:#ff003c;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-    gap:10px;
-    padding:15px;
+  width:100%;
+  max-width:850px;
+  margin:auto;
+  padding:18px;
 }
 
 .card{
-    background:linear-gradient(145deg,#171717,#101010);
-    border:1px solid #292929;
-    border-radius:16px;
-    padding:15px;
-    text-align:center;
-    cursor:pointer;
-    transition:.2s;
+  background:#121212;
+  border:1px solid #292929;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:16px;
+  box-shadow:0 8px 25px #0008;
 }
 
-.card:hover{
-    transform:translateY(-3px);
-    border-color:#ff003c;
-    box-shadow:0 8px 20px rgba(255,0,60,.15);
+.title{
+  font-size:19px;
+  font-weight:900;
+  margin-bottom:13px;
 }
 
-.phone{
-    font-size:25px;
-    margin-bottom:8px;
+.search{
+  width:100%;
+  background:#181818;
+  border:1px solid #333;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  outline:none;
+  font-size:15px;
 }
 
-.card h3{
-    font-size:11px;
-    line-height:1.4;
+.search:focus{
+  border-color:#ff003c;
 }
 
-.card p{
-    font-family:Arial,sans-serif;
-    font-size:9px;
-    color:#777;
-    margin-top:6px;
+.phone-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-top:13px;
 }
 
-.no-results{
-    grid-column:1/-1;
-    text-align:center;
-    padding:30px;
-    color:#777;
+.option{
+  background:#1b1b1b;
+  border:1px solid #303030;
+  color:#fff;
+  padding:13px 8px;
+  border-radius:11px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
 }
 
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.92);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:15px;
-    z-index:1000;
+.option:hover{
+  border-color:#ff003c;
+  transform:translateY(-1px);
 }
 
-.modal.show{
-    display:flex;
+.option.active{
+  background:#ff003c;
+  border-color:#ff003c;
 }
 
-.box{
-    background:#111;
-    border:2px solid #ff003c;
-    border-radius:20px;
-    padding:20px;
-    width:100%;
-    max-width:400px;
-    max-height:90vh;
-    overflow-y:auto;
-    text-align:center;
-    box-shadow:0 0 35px rgba(255,0,60,.25);
+.options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
 }
 
-.box h2{
-    color:#ff003c;
-    margin-bottom:5px;
-}
-
-.subtitle{
-    color:#777;
-    font-family:Arial,sans-serif;
-    font-size:11px;
-    margin-bottom:15px;
-}
-
-.row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 5px;
-    border-bottom:1px solid #242424;
-    font-family:Arial,sans-serif;
-}
-
-.row b{
-    color:#ff003c;
-    font-size:16px;
-}
-
-.buttons{
-    display:flex;
-    gap:8px;
-    margin-top:15px;
-}
-
-.btn{
-    flex:1;
-    border:0;
-    padding:12px;
-    border-radius:10px;
-    cursor:pointer;
-    font-family:Arial Black;
-}
-
-.copy{
-    background:#ff003c;
-    color:#fff;
-}
-
-.close{
-    background:#292929;
-    color:#fff;
-}
-
-.footer{
-    text-align:center;
-    color:#555;
-    font-family:Arial,sans-serif;
-    font-size:10px;
-    padding:25px 15px;
-}
-
-/* Generador */
-
-.generator{
-    margin:5px 15px 15px;
-    background:#131313;
-    border:1px solid #292929;
-    border-radius:18px;
-    padding:18px;
-}
-
-.generator h2{
-    color:#ff003c;
-    font-size:16px;
-    margin-bottom:12px;
-}
-
-.generator label{
-    display:block;
-    font-family:Arial,sans-serif;
-    font-size:12px;
-    margin:10px 0 5px;
-    color:#bbb;
-}
-
-.generator select{
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #333;
-    background:#1c1c1c;
-    color:#fff;
+.options.two{
+  grid-template-columns:repeat(2,1fr);
 }
 
 .generate{
-    width:100%;
-    margin-top:15px;
-    padding:13px;
-    border:0;
-    border-radius:10px;
-    background:#ff003c;
-    color:white;
-    font-family:Arial Black;
-    cursor:pointer;
+  width:100%;
+  border:0;
+  border-radius:14px;
+  padding:17px;
+  background:linear-gradient(90deg,#ff003c,#ff174f);
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 0 25px #ff003c44;
 }
 
-.result{
-    display:none;
-    margin-top:15px;
-    background:#0c0c0c;
-    border-radius:12px;
-    padding:12px;
-    font-family:Arial,sans-serif;
-    font-size:12px;
-    line-height:1.8;
+.generate:active{
+  transform:scale(.98);
 }
 
-.result b{
-    color:#ff003c;
+.hidden{
+  display:none!important;
+}
+
+/* ANALIZANDO */
+
+.loading{
+  text-align:center;
+  padding:28px 10px;
+}
+
+.loader{
+  width:65px;
+  height:65px;
+  border:5px solid #292929;
+  border-top-color:#ff003c;
+  border-radius:50%;
+  margin:0 auto 18px;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.loading h2{
+  color:#ff003c;
+  margin-bottom:8px;
+}
+
+.loading p{
+  color:#aaa;
+  font-size:14px;
+}
+
+/* RESULTADO */
+
+.result-header{
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.result-header h2{
+  color:#ff003c;
+  font-size:24px;
+}
+
+.result-header p{
+  color:#aaa;
+  margin-top:6px;
+}
+
+.sensi-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.sensi-box{
+  background:#191919;
+  border-radius:14px;
+  padding:15px;
+  text-align:center;
+  border:1px solid #292929;
+}
+
+.sensi-box small{
+  display:block;
+  color:#999;
+  margin-bottom:6px;
+}
+
+.sensi-box strong{
+  color:#ff174f;
+  font-size:28px;
+}
+
+.adjust-title{
+  margin-top:20px;
+  margin-bottom:10px;
+  color:#ddd;
+  font-size:15px;
+}
+
+.adjust-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.adjust{
+  background:#1c1c1c;
+  border:1px solid #333;
+  color:#fff;
+  padding:12px 5px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.adjust:hover{
+  border-color:#ff003c;
+}
+
+.copy{
+  width:100%;
+  margin-top:12px;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  background:#fff;
+  color:#000;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.reset{
+  width:100%;
+  margin-top:8px;
+  padding:13px;
+  border:1px solid #333;
+  border-radius:12px;
+  background:#151515;
+  color:#fff;
+  font-weight:bold;
+}
+
+.info{
+  color:#888;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:13px;
+}
+
+footer{
+  text-align:center;
+  color:#666;
+  padding:30px 15px;
+  font-size:13px;
+}
+
+@media(max-width:500px){
+
+  .phone-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .options{
+    grid-template-columns:1fr;
+  }
+
+  .options.two{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .sensi-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .adjust-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">
-    <h1>SYSTEM HANS IA 🔥</h1>
-    <p>SENSIBILIDADES FREE FIRE</p>
-</div>
+<header>
+  <div class="logo">🔥 SYSTEM HANS IA</div>
+  <p>SENSIBILIDADES FF • GENERADOR 2.0</p>
+</header>
 
-<div class="container">
+<main class="container">
 
-    <div class="search">
-        <input
-            id="buscador"
-            oninput="filtrar()"
-            placeholder="🔍 Busca tu celular..."
-            autocomplete="off"
-        >
+  <!-- PASO 1 -->
+
+  <section class="card">
+
+    <div class="title">
+      📱 1. Selecciona tu celular
     </div>
 
-    <div class="controls">
-        <button class="active" onclick="mostrarTodos(this)">📱 Todos</button>
-        <button onclick="filtrarMarca('Redmi',this)">🔴 Redmi</button>
-        <button onclick="filtrarMarca('Poco',this)">⚡ Poco</button>
-        <button onclick="filtrarMarca('Samsung',this)">🔵 Samsung</button>
-        <button onclick="filtrarMarca('Infinix',this)">🔥 Infinix</button>
-        <button onclick="filtrarMarca('Tecno',this)">📲 Tecno</button>
-        <button onclick="filtrarMarca('Moto',this)">🟢 Moto</button>
-        <button onclick="filtrarMarca('Realme',this)">🟡 Realme</button>
-        <button onclick="filtrarMarca('iPhone',this)">🍎 iPhone</button>
+    <input
+      id="search"
+      class="search"
+      type="text"
+      placeholder="🔎 Buscar modelo..."
+      oninput="searchPhones()"
+    >
+
+    <div id="phones" class="phone-grid"></div>
+
+  </section>
+
+
+  <!-- PASO 2 -->
+
+  <section class="card">
+
+    <div class="title">
+      🎮 2. ¿Cómo quieres la sensibilidad?
     </div>
 
-    <div class="device">
-        📱 Dispositivo detectado:
-        <strong id="deviceName">Detectando...</strong>
-    </div>
+    <div class="options">
 
-    <div class="generator">
+      <button
+        class="option"
+        onclick="selectOption('style','rapida',this)"
+      >
+        ⚡ Rápida
+      </button>
 
-        <h2>🔥 GENERADOR HANS IA</h2>
+      <button
+        class="option active"
+        onclick="selectOption('style','equilibrada',this)"
+      >
+        🎯 Equilibrada
+      </button>
 
-        <label>Tipo de juego</label>
-
-        <select id="estilo">
-            <option value="rojos">🔥 Rojos / Headshots</option>
-            <option value="pvp">⚔️ PvP</option>
-            <option value="m1887">💥 M1887 + MP40</option>
-            <option value="preciso">🎯 Precisión</option>
-        </select>
-
-        <label>Controles</label>
-
-        <select id="dedos">
-            <option value="2">2 dedos</option>
-            <option value="3">3 dedos</option>
-            <option value="4">4 dedos</option>
-        </select>
-
-        <button class="generate" onclick="generarSensi()">
-            ⚡ GENERAR SENSIBILIDAD
-        </button>
-
-        <div class="result" id="resultado"></div>
-
-    </div>
-
-    <div class="grid" id="grid"></div>
-
-</div>
-
-<div
-    class="modal"
-    id="modal"
-    onclick="cerrarModal(event)"
->
-
-    <div class="box">
-
-        <h2 id="mTitle"></h2>
-
-        <div class="subtitle">
-            Configuración recomendada
-        </div>
-
-        <div id="mBody"></div>
-
-        <div class="buttons">
-
-            <button
-                class="btn copy"
-                onclick="copiarSensi()"
-            >
-                📋 COPIAR
-            </button>
-
-            <button
-                class="btn close"
-                onclick="cerrar()"
-            >
-                CERRAR
-            </button>
-
-        </div>
+      <button
+        class="option"
+        onclick="selectOption('style','controlada',this)"
+      >
+        🛡️ Controlada
+      </button>
 
     </div>
 
-</div>
+  </section>
 
-<div class="footer">
-    SYSTEM HANS IA • Configuración para Free Fire
-</div>
+
+  <!-- PASO 3 -->
+
+  <section class="card">
+
+    <div class="title">
+      🖐️ 3. ¿Cuántos dedos utilizas?
+    </div>
+
+    <div class="options">
+
+      <button
+        class="option active"
+        onclick="selectOption('fingers',2,this)"
+      >
+        2 dedos
+      </button>
+
+      <button
+        class="option"
+        onclick="selectOption('fingers',3,this)"
+      >
+        3 dedos
+      </button>
+
+      <button
+        class="option"
+        onclick="selectOption('fingers',4,this)"
+      >
+        4 dedos
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- PASO 4 -->
+
+  <section class="card">
+
+    <div class="title">
+      🎯 4. ¿Qué pasa con tu mira?
+    </div>
+
+    <div class="options two">
+
+      <button
+        class="option active"
+        onclick="selectOption('problem','normal',this)"
+      >
+        ✅ Normal
+      </button>
+
+      <button
+        class="option"
+        onclick="selectOption('problem','pasa',this)"
+      >
+        ⬆️ Se pasa
+      </button>
+
+      <button
+        class="option"
+        onclick="selectOption('problem','corta',this)"
+      >
+        ⬇️ Se queda corta
+      </button>
+
+      <button
+        class="option"
+        onclick="selectOption('problem','tiembla',this)"
+      >
+        〰️ Tiembla
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- GENERAR -->
+
+  <section class="card">
+
+    <button
+      class="generate"
+      onclick="generateSensitivity()"
+    >
+      🔥 GENERAR MI SENSI
+    </button>
+
+  </section>
+
+
+  <!-- ANALIZANDO -->
+
+  <section
+    id="loading"
+    class="card loading hidden"
+  >
+
+    <div class="loader"></div>
+
+    <h2>⚡ ANALIZANDO...</h2>
+
+    <p id="loadingText">
+      SYSTEM HANS IA está preparando tu configuración.
+    </p>
+
+  </section>
+
+
+  <!-- RESULTADO -->
+
+  <section
+    id="result"
+    class="card hidden"
+  >
+
+    <div class="result-header">
+
+      <h2>🔥 TU SENSI ESTÁ LISTA</h2>
+
+      <p id="deviceResult">
+        Dispositivo
+      </p>
+
+    </div>
+
+
+    <div class="sensi-grid">
+
+      <div class="sensi-box">
+        <small>General</small>
+        <strong id="general">0</strong>
+      </div>
+
+      <div class="sensi-box">
+        <small>Punto rojo</small>
+        <strong id="redDot">0</strong>
+      </div>
+
+      <div class="sensi-box">
+        <small>Mira 2X</small>
+        <strong id="scope2">0</strong>
+      </div>
+
+      <div class="sensi-box">
+        <small>Mira 4X</small>
+        <strong id="scope4">0</strong>
+      </div>
+
+      <div class="sensi-box">
+        <small>Francotirador</small>
+        <strong id="sniper">0</strong>
+      </div>
+
+      <div class="sensi-box">
+        <small>Cámara libre</small>
+        <strong id="free">0</strong>
+      </div>
+
+    </div>
+
+
+    <div class="adjust-title">
+      ⚙️ Ajuste rápido
+    </div>
+
+    <div class="adjust-grid">
+
+      <button class="adjust" onclick="adjust(-5)">
+        -5
+      </button>
+
+      <button class="adjust" onclick="adjust(-2)">
+        -2
+      </button>
+
+      <button class="adjust" onclick="adjust(2)">
+        +2
+      </button>
+
+      <button class="adjust" onclick="adjust(5)">
+        +5
+      </button>
+
+    </div>
+
+
+    <button
+      class="copy"
+      onclick="copySensitivity()"
+    >
+      📋 COPIAR SENSIBILIDAD
+    </button>
+
+
+    <button
+      class="reset"
+      onclick="newSensitivity()"
+    >
+      🔄 GENERAR OTRA
+    </button>
+
+
+    <p class="info">
+      Esta configuración es una recomendación inicial.
+      La respuesta puede variar según el dispositivo,
+      configuración táctil y estilo de juego. Haz cambios
+      pequeños después de probarla.
+    </p>
+
+  </section>
+
+</main>
+
+
+<footer>
+  SYSTEM HANS IA 🔥<br>
+  Sensibilidades FF • Generador personalizado
+</footer>
+
 
 <script>
 
-const data = [
+/* =========================
+   DATOS
+========================= */
 
-{
-name:"Redmi Note 10 Pro",
-g:170,r:155,x2:140,x4:125,awm:110,dpi:395
-},
+const phones = [
 
-{
-name:"Redmi Note 11",
-g:165,r:150,x2:135,x4:120,awm:105,dpi:411
-},
+"Redmi Note 10 Pro",
+"Redmi Note 11",
+"Redmi Note 12",
+"Redmi Note 13",
+"Redmi Note 13 Pro",
+"Redmi Note 14",
 
-{
-name:"Redmi Note 11 Pro",
-g:172,r:156,x2:142,x4:126,awm:112,dpi:400
-},
+"POCO X3 Pro",
+"POCO X4 Pro",
+"POCO X5 Pro",
+"POCO X6 Pro",
+"POCO F3",
+"POCO F4",
+"POCO F5",
 
-{
-name:"Redmi Note 12",
-g:175,r:160,x2:145,x4:130,awm:115,dpi:400
-},
+"Samsung A12",
+"Samsung A13",
+"Samsung A14",
+"Samsung A15",
+"Samsung A24",
+"Samsung A25",
+"Samsung A34",
+"Samsung A35",
+"Samsung A54",
+"Samsung S21",
+"Samsung S22",
+"Samsung S23",
+"Samsung S24",
 
-{
-name:"Redmi Note 12 Pro",
-g:178,r:162,x2:148,x4:132,awm:118,dpi:395
-},
+"iPhone 11",
+"iPhone 12",
+"iPhone 13",
+"iPhone 14",
+"iPhone 15",
+"iPhone 16",
 
-{
-name:"Redmi Note 13 Pro",
-g:180,r:165,x2:150,x4:135,awm:120,dpi:390
-},
+"Realme C55",
+"Realme C67",
+"Realme 10",
+"Realme 11",
 
-{
-name:"Poco X3 Pro",
-g:180,r:165,x2:150,x4:135,awm:120,dpi:390
-},
+"Motorola G54",
+"Motorola G84",
+"Motorola Edge 40",
 
-{
-name:"Poco X3 GT",
-g:182,r:168,x2:152,x4:138,awm:122,dpi:385
-},
-
-{
-name:"Poco X4 Pro",
-g:176,r:160,x2:146,x4:130,awm:116,dpi:392
-},
-
-{
-name:"Poco X5 Pro",
-g:178,r:162,x2:148,x4:132,awm:118,dpi:395
-},
-
-{
-name:"Poco F4",
-g:185,r:170,x2:155,x4:140,awm:125,dpi:380
-},
-
-{
-name:"Poco F5",
-g:188,r:172,x2:158,x4:142,awm:128,dpi:375
-},
-
-{
-name:"Samsung A12",
-g:150,r:135,x2:120,x4:110,awm:95,dpi:450
-},
-
-{
-name:"Samsung A13",
-g:155,r:140,x2:125,x4:112,awm:98,dpi:440
-},
-
-{
-name:"Samsung A23",
-g:160,r:145,x2:130,x4:118,awm:100,dpi:420
-},
-
-{
-name:"Samsung A32",
-g:160,r:145,x2:130,x4:118,awm:100,dpi:420
-},
-
-{
-name:"Samsung A34",
-g:165,r:150,x2:135,x4:120,awm:105,dpi:410
-},
-
-{
-name:"Samsung A54",
-g:162,r:148,x2:132,x4:120,awm:102,dpi:415
-},
-
-{
-name:"Samsung S20 FE",
-g:170,r:155,x2:140,x4:125,awm:110,dpi:400
-},
-
-{
-name:"Infinix Hot 20",
-g:183,r:172,x2:158,x4:142,awm:123,dpi:365
-},
-
-{
-name:"Infinix Hot 30",
-g:185,r:175,x2:160,x4:145,awm:125,dpi:360
-},
-
-{
-name:"Infinix Hot 40",
-g:187,r:177,x2:162,x4:147,awm:127,dpi:355
-},
-
-{
-name:"Infinix Note 30",
-g:186,r:176,x2:161,x4:146,awm:126,dpi:358
-},
-
-{
-name:"Tecno Spark 10",
-g:172,r:158,x2:142,x4:128,awm:112,dpi:380
-},
-
-{
-name:"Tecno Spark 20",
-g:174,r:160,x2:144,x4:130,awm:114,dpi:375
-},
-
-{
-name:"Tecno Pova 5",
-g:178,r:163,x2:148,x4:133,awm:117,dpi:370
-},
-
-{
-name:"Moto G60",
-g:168,r:152,x2:138,x4:122,awm:108,dpi:410
-},
-
-{
-name:"Moto G84",
-g:170,r:154,x2:140,x4:124,awm:109,dpi:405
-},
-
-{
-name:"Moto G54",
-g:166,r:150,x2:136,x4:121,awm:106,dpi:412
-},
-
-{
-name:"Realme C55",
-g:173,r:159,x2:143,x4:129,awm:113,dpi:378
-},
-
-{
-name:"Realme Narzo 50",
-g:175,r:161,x2:145,x4:131,awm:115,dpi:376
-},
-
-{
-name:"iPhone 11",
-g:140,r:125,x2:110,x4:95,awm:85,dpi:0
-}
+"Infinix Hot 30",
+"Infinix Hot 40",
+"Tecno Pova 5",
+"Tecno Pova 6"
 
 ];
 
-let seleccionActual = null;
 
-function render(lista){
+/* =========================
+   ESTADO
+========================= */
 
-    const grid = document.getElementById("grid");
+let selectedPhone = "";
 
-    if(lista.length === 0){
+let settings = {
 
-        grid.innerHTML =
-        `<div class="no-results">
-            ❌ No se encontró ese celular.
-        </div>`;
+  style:"equilibrada",
 
-        return;
-    }
+  fingers:2,
 
-    grid.innerHTML = lista.map(d => {
+  problem:"normal"
 
-        const index = data.indexOf(d);
+};
 
-        return `
-        <div class="card" onclick="abrir(${index})">
 
-            <div class="phone">📱</div>
+let sensitivity = {
 
-            <h3>${d.name}</h3>
+  general:90,
 
-            <p>VER SENSI →</p>
+  redDot:85,
 
-        </div>
-        `;
+  scope2:80,
 
-    }).join("");
-}
+  scope4:75,
 
-function abrir(i){
+  sniper:55,
 
-    const s = data[i];
+  free:70
 
-    seleccionActual = s;
+};
 
-    document.getElementById("mTitle").innerText = s.name;
 
-    document.getElementById("mBody").innerHTML = `
+/* =========================
+   MOSTRAR CELULARES
+========================= */
 
-        <div class="row">
-            <span>General</span>
-            <b>${s.g}</b>
-        </div>
+function renderPhones(list=phones){
 
-        <div class="row">
-            <span>Punto Rojo</span>
-            <b>${s.r}</b>
-        </div>
+  const container =
+    document.getElementById("phones");
 
-        <div class="row">
-            <span>Mira 2x</span>
-            <b>${s.x2}</b>
-        </div>
+  container.innerHTML="";
 
-        <div class="row">
-            <span>Mira 4x</span>
-            <b>${s.x4}</b>
-        </div>
+  list.forEach(phone=>{
 
-        <div class="row">
-            <span>AWM</span>
-            <b>${s.awm}</b>
-        </div>
+    const button =
+      document.createElement("button");
 
-        <div class="row">
-            <span>DPI</span>
-            <b>${s.dpi === 0 ? "Sin DPI" : s.dpi}</b>
-        </div>
+    button.className="option";
 
-    `;
+    button.textContent=phone;
 
-    document.getElementById("modal").classList.add("show");
-}
+    button.onclick=()=>{
 
-function cerrar(){
+      document
+        .querySelectorAll("#phones .option")
+        .forEach(btn=>{
+          btn.classList.remove("active");
+        });
 
-    document
-    .getElementById("modal")
-    .classList.remove("show");
+      button.classList.add("active");
 
-}
-
-function cerrarModal(e){
-
-    if(e.target.id === "modal"){
-        cerrar();
-    }
-
-}
-
-function copiarSensi(){
-
-    if(!seleccionActual) return;
-
-    const s = seleccionActual;
-
-    const texto =
-`SYSTEM HANS IA 🔥
-
-📱 ${s.name}
-
-General: ${s.g}
-Punto Rojo: ${s.r}
-Mira 2x: ${s.x2}
-Mira 4x: ${s.x4}
-AWM: ${s.awm}
-DPI: ${s.dpi === 0 ? "Sin DPI" : s.dpi}`;
-
-    navigator.clipboard.writeText(texto)
-    .then(() => {
-
-        alert("✅ Sensibilidad copiada");
-
-    })
-    .catch(() => {
-
-        alert("No se pudo copiar automáticamente.");
-
-    });
-}
-
-function filtrar(){
-
-    const q =
-    document
-    .getElementById("buscador")
-    .value
-    .toLowerCase()
-    .trim();
-
-    render(
-        data.filter(d =>
-            d.name.toLowerCase().includes(q)
-        )
-    );
-}
-
-function filtrarMarca(marca,boton){
-
-    activarBoton(boton);
-
-    const q =
-    document
-    .getElementById("buscador")
-    .value
-    .toLowerCase()
-    .trim();
-
-    render(
-        data.filter(d =>
-            d.name.toLowerCase().includes(marca.toLowerCase()) &&
-            d.name.toLowerCase().includes(q)
-        )
-    );
-}
-
-function mostrarTodos(boton){
-
-    activarBoton(boton);
-
-    document.getElementById("buscador").value = "";
-
-    render(data);
-
-}
-
-function activarBoton(boton){
-
-    document
-    .querySelectorAll(".controls button")
-    .forEach(b => b.classList.remove("active"));
-
-    boton.classList.add("active");
-
-}
-
-/* GENERADOR */
-
-function generarSensi(){
-
-    const estilo =
-    document.getElementById("estilo").value;
-
-    const dedos =
-    document.getElementById("dedos").value;
-
-    let s = {
-
-        g:175,
-        r:160,
-        x2:145,
-        x4:130,
-        awm:115,
-        dpi:400
+      selectedPhone=phone;
 
     };
 
-    if(estilo === "m1887"){
+    container.appendChild(button);
 
-        s.g = 190;
-        s.r = 175;
-        s.x2 = 150;
-        s.x4 = 130;
-        s.awm = 110;
+  });
 
-    }
+}
 
-    if(estilo === "pvp"){
 
-        s.g = 185;
-        s.r = 170;
-        s.x2 = 155;
-        s.x4 = 135;
-        s.awm = 115;
+/* =========================
+   BUSCADOR
+========================= */
 
-    }
+function searchPhones(){
 
-    if(estilo === "preciso"){
+  const query =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase()
+      .trim();
 
-        s.g = 165;
-        s.r = 150;
-        s.x2 = 140;
-        s.x4 = 125;
-        s.awm = 110;
+  const filtered =
+    phones.filter(phone=>
+      phone.toLowerCase().includes(query)
+    );
 
-    }
+  renderPhones(filtered);
 
-    if(estilo === "rojos"){
+}
 
-        s.g = 188;
-        s.r = 172;
-        s.x2 = 150;
-        s.x4 = 135;
-        s.awm = 115;
 
-    }
+/* =========================
+   SELECCIONES
+========================= */
 
-    if(dedos === "3"){
+function selectOption(type,value,button){
 
-        s.g += 2;
-        s.r += 2;
+  settings[type]=value;
 
-    }
+  button.parentElement
+    .querySelectorAll(".option")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
 
-    if(dedos === "4"){
+  button.classList.add("active");
 
-        s.g += 4;
-        s.r += 4;
+}
 
-    }
 
-    /* Evitar valores superiores a 200 */
+/* =========================
+   GENERADOR
+========================= */
 
-    Object.keys(s).forEach(k => {
+function generateSensitivity(){
 
-        if(k !== "dpi" && s[k] > 200){
-            s[k] = 200;
-        }
+  if(!selectedPhone){
+
+    alert("📱 Primero selecciona tu celular.");
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("result")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loading")
+    .classList.remove("hidden");
+
+
+  const messages=[
+
+    "Analizando dispositivo...",
+
+    "Calculando respuesta táctil...",
+
+    "Ajustando sensibilidad...",
+
+    "Preparando configuración..."
+
+  ];
+
+
+  let index=0;
+
+  const text =
+    document.getElementById("loadingText");
+
+
+  const interval =
+    setInterval(()=>{
+
+      text.textContent=
+        messages[index];
+
+      index++;
+
+      if(index>=messages.length){
+
+        clearInterval(interval);
+
+      }
+
+    },450);
+
+
+  setTimeout(()=>{
+
+    createSensitivity();
+
+    document
+      .getElementById("loading")
+      .classList.add("hidden");
+
+    document
+      .getElementById("result")
+      .classList.remove("hidden");
+
+    document
+      .getElementById("result")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  },1900);
+
+}
+
+
+/* =========================
+   CREAR SENSI
+========================= */
+
+function createSensitivity(){
+
+  let base=88;
+
+
+  /* ESTILO */
+
+  if(settings.style==="rapida")
+    base+=7;
+
+  if(settings.style==="controlada")
+    base-=8;
+
+
+  /* DEDOS */
+
+  if(settings.fingers===3)
+    base+=2;
+
+  if(settings.fingers===4)
+    base+=4;
+
+
+  /* PROBLEMA */
+
+  if(settings.problem==="pasa")
+    base-=6;
+
+  if(settings.problem==="corta")
+    base+=5;
+
+  if(settings.problem==="tiembla")
+    base-=4;
+
+
+  sensitivity.general=base;
+
+  sensitivity.redDot=base-4;
+
+  sensitivity.scope2=base-9;
+
+  sensitivity.scope4=base-14;
+
+  sensitivity.sniper=base-31;
+
+  sensitivity.free=base-18;
+
+
+  limitValues();
+
+  updateResult();
+
+
+  document
+    .getElementById("deviceResult")
+    .textContent=
+      "📱 "+selectedPhone+
+      " • "+
+      settings.fingers+
+      " dedos";
+
+
+  saveData();
+
+}
+
+
+/* =========================
+   LIMITAR
+========================= */
+
+function limitValues(){
+
+  Object.keys(sensitivity)
+    .forEach(key=>{
+
+      sensitivity[key]=Math.max(
+        0,
+        Math.min(
+          100,
+          Math.round(sensitivity[key])
+        )
+      );
 
     });
 
-    const resultado =
-    document.getElementById("resultado");
+}
 
-    resultado.style.display = "block";
 
-    resultado.innerHTML = `
+/* =========================
+   ACTUALIZAR RESULTADO
+========================= */
 
-        🎯 <b>CONFIGURACIÓN GENERADA</b><br><br>
+function updateResult(){
 
-        General: <b>${s.g}</b><br>
-        Punto Rojo: <b>${s.r}</b><br>
-        Mira 2x: <b>${s.x2}</b><br>
-        Mira 4x: <b>${s.x4}</b><br>
-        AWM: <b>${s.awm}</b><br>
-        DPI recomendado: <b>${s.dpi}</b><br>
-        Controles: <b>${dedos} dedos</b>
+  document
+    .getElementById("general")
+    .textContent=
+      sensitivity.general;
 
-    `;
+  document
+    .getElementById("redDot")
+    .textContent=
+      sensitivity.redDot;
+
+  document
+    .getElementById("scope2")
+    .textContent=
+      sensitivity.scope2;
+
+  document
+    .getElementById("scope4")
+    .textContent=
+      sensitivity.scope4;
+
+  document
+    .getElementById("sniper")
+    .textContent=
+      sensitivity.sniper;
+
+  document
+    .getElementById("free")
+    .textContent=
+      sensitivity.free;
 
 }
 
-/* DETECCIÓN DEL DISPOSITIVO */
 
-function detectarDispositivo(){
+/* =========================
+   AJUSTAR
+========================= */
 
-    const ua = navigator.userAgent.toLowerCase();
+function adjust(amount){
 
-    let nombre = "Dispositivo no identificado";
+  sensitivity.general+=amount;
 
-    if(ua.includes("m2101k6g")){
-        nombre = "Redmi Note 10 Pro";
-    }
-    else if(ua.includes("redmi")){
-        nombre = "Xiaomi Redmi";
-    }
-    else if(ua.includes("poco")){
-        nombre = "POCO";
-    }
-    else if(ua.includes("samsung")){
-        nombre = "Samsung";
-    }
-    else if(ua.includes("infinix")){
-        nombre = "Infinix";
-    }
-    else if(ua.includes("tecno")){
-        nombre = "Tecno";
-    }
-    else if(ua.includes("motorola") || ua.includes("moto")){
-        nombre = "Motorola";
-    }
-    else if(ua.includes("realme")){
-        nombre = "Realme";
-    }
-    else if(ua.includes("iphone")){
-        nombre = "iPhone";
-    }
+  sensitivity.redDot+=amount;
 
-    document.getElementById("deviceName").innerText = nombre;
+  sensitivity.scope2+=amount;
+
+  sensitivity.scope4+=amount;
+
+
+  limitValues();
+
+  updateResult();
+
+  saveData();
+
 }
 
-/* INICIO */
 
-render(data);
-detectarDispositivo();
+/* =========================
+   COPIAR
+========================= */
+
+function copySensitivity(){
+
+  const text=
+`🔥 SYSTEM HANS IA
+
+📱 ${selectedPhone}
+
+General: ${sensitivity.general}
+Punto rojo: ${sensitivity.redDot}
+Mira 2X: ${sensitivity.scope2}
+Mira 4X: ${sensitivity.scope4}
+Francotirador: ${sensitivity.sniper}
+Cámara libre: ${sensitivity.free}`;
+
+  navigator
+    .clipboard
+    .writeText(text)
+    .then(()=>{
+
+      alert(
+        "✅ Sensibilidad copiada."
+      );
+
+    })
+    .catch(()=>{
+
+      alert(
+        "No se pudo copiar automáticamente."
+      );
+
+    });
+
+}
+
+
+/* =========================
+   NUEVA SENSI
+========================= */
+
+function newSensitivity(){
+
+  document
+    .getElementById("result")
+    .classList.add("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================
+   GUARDAR
+========================= */
+
+function saveData(){
+
+  const data={
+
+    phone:selectedPhone,
+
+    settings:settings,
+
+    sensitivity:sensitivity
+
+  };
+
+  localStorage.setItem(
+    "systemHansIA",
+    JSON.stringify(data)
+  );
+
+}
+
+
+/* =========================
+   CARGAR
+========================= */
+
+function loadData(){
+
+  const saved=
+    localStorage.getItem(
+      "systemHansIA"
+    );
+
+  if(!saved)return;
+
+  try{
+
+    const data=
+      JSON.parse(saved);
+
+    if(data.phone)
+      selectedPhone=data.phone;
+
+    if(data.settings)
+      settings=data.settings;
+
+    if(data.sensitivity)
+      sensitivity=data.sensitivity;
+
+  }catch(error){
+
+    console.log(
+      "No se pudo cargar la configuración."
+    );
+
+  }
+
+}
+
+
+/* =========================
+   INICIO
+========================= */
+
+loadData();
+
+renderPhones();
 
 </script>
 
 </body>
-  </html>
+    </html>
