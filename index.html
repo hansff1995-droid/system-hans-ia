@@ -4,299 +4,237 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ff003c">
-
-<title>SYSTEM HANS IA 2.0 - Sensis FF</title>
+<title>SYSTEM HANS IA - Sensis FF</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  background:#080808;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
+    background:#080808;
+    color:#fff;
+    min-height:100vh;
 }
 
 header{
-  background:linear-gradient(135deg,#ff003c,#850020);
-  padding:24px 15px;
-  text-align:center;
-  box-shadow:0 0 25px #ff003c55;
+    background:linear-gradient(135deg,#ff003c,#8b001f);
+    padding:25px 15px;
+    text-align:center;
+    box-shadow:0 0 25px #ff003c66;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:900;
-}
-
-.logo span{
-  color:#fff;
+header h1{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
 header p{
-  margin-top:7px;
-  color:#eee;
-  font-size:14px;
+    margin-top:7px;
+    color:#fff;
+    opacity:.9;
 }
 
 .container{
-  width:100%;
-  max-width:850px;
-  margin:auto;
-  padding:18px;
+    width:94%;
+    max-width:900px;
+    margin:20px auto 50px;
 }
 
 .card{
-  background:#121212;
-  border:1px solid #292929;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:16px;
-  box-shadow:0 8px 25px #0008;
+    background:#121212;
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 0 18px #000;
 }
 
 .title{
-  font-size:19px;
-  font-weight:900;
-  margin-bottom:13px;
+    font-size:20px;
+    font-weight:900;
+    margin-bottom:15px;
 }
 
-.search{
-  width:100%;
-  background:#181818;
-  border:1px solid #333;
-  color:#fff;
-  padding:15px;
-  border-radius:12px;
-  outline:none;
-  font-size:15px;
+label{
+    display:block;
+    margin:15px 0 8px;
+    font-weight:bold;
 }
 
-.search:focus{
-  border-color:#ff003c;
+input,select{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#090909;
+    color:#fff;
+    outline:none;
+    font-size:15px;
 }
 
-.phone-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
-  margin-top:13px;
+input:focus,select:focus{
+    border-color:#ff003c;
 }
 
-.option{
-  background:#1b1b1b;
-  border:1px solid #303030;
-  color:#fff;
-  padding:13px 8px;
-  border-radius:11px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.2s;
+button{
+    border:0;
+    cursor:pointer;
+    color:#fff;
+    font-weight:900;
 }
 
-.option:hover{
-  border-color:#ff003c;
-  transform:translateY(-1px);
+.main-btn{
+    width:100%;
+    padding:16px;
+    margin-top:20px;
+    border-radius:13px;
+    background:linear-gradient(135deg,#ff003c,#b0002b);
+    font-size:17px;
+    box-shadow:0 0 18px #ff003c55;
 }
 
-.option.active{
-  background:#ff003c;
-  border-color:#ff003c;
-}
-
-.options{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-}
-
-.options.two{
-  grid-template-columns:repeat(2,1fr);
-}
-
-.generate{
-  width:100%;
-  border:0;
-  border-radius:14px;
-  padding:17px;
-  background:linear-gradient(90deg,#ff003c,#ff174f);
-  color:#fff;
-  font-size:18px;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 0 25px #ff003c44;
-}
-
-.generate:active{
-  transform:scale(.98);
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* ANALIZANDO */
-
-.loading{
-  text-align:center;
-  padding:28px 10px;
-}
-
-.loader{
-  width:65px;
-  height:65px;
-  border:5px solid #292929;
-  border-top-color:#ff003c;
-  border-radius:50%;
-  margin:0 auto 18px;
-  animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-.loading h2{
-  color:#ff003c;
-  margin-bottom:8px;
-}
-
-.loading p{
-  color:#aaa;
-  font-size:14px;
-}
-
-/* RESULTADO */
-
-.result-header{
-  text-align:center;
-  margin-bottom:18px;
-}
-
-.result-header h2{
-  color:#ff003c;
-  font-size:24px;
-}
-
-.result-header p{
-  color:#aaa;
-  margin-top:6px;
-}
-
-.sensi-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.sensi-box{
-  background:#191919;
-  border-radius:14px;
-  padding:15px;
-  text-align:center;
-  border:1px solid #292929;
-}
-
-.sensi-box small{
-  display:block;
-  color:#999;
-  margin-bottom:6px;
-}
-
-.sensi-box strong{
-  color:#ff174f;
-  font-size:28px;
-}
-
-.adjust-title{
-  margin-top:20px;
-  margin-bottom:10px;
-  color:#ddd;
-  font-size:15px;
-}
-
-.adjust-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-
-.adjust{
-  background:#1c1c1c;
-  border:1px solid #333;
-  color:#fff;
-  padding:12px 5px;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.adjust:hover{
-  border-color:#ff003c;
-}
-
-.copy{
-  width:100%;
-  margin-top:12px;
-  padding:15px;
-  border:0;
-  border-radius:12px;
-  background:#fff;
-  color:#000;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.reset{
-  width:100%;
-  margin-top:8px;
-  padding:13px;
-  border:1px solid #333;
-  border-radius:12px;
-  background:#151515;
-  color:#fff;
-  font-weight:bold;
+.main-btn:active{
+    transform:scale(.98);
 }
 
 .info{
-  color:#888;
-  font-size:12px;
-  line-height:1.5;
-  margin-top:13px;
+    margin-top:10px;
+    font-size:12px;
+    color:#aaa;
+    line-height:1.5;
+}
+
+.loading{
+    display:none;
+    text-align:center;
+}
+
+.spinner{
+    width:45px;
+    height:45px;
+    border:4px solid #333;
+    border-top-color:#ff003c;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:10px auto 15px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+.result{
+    display:none;
+}
+
+.result h2{
+    color:#ff003c;
+    margin-bottom:8px;
+}
+
+.result-sub{
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.sensi-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.sensi{
+    background:#0b0b0b;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:15px;
+}
+
+.sensi-name{
+    color:#aaa;
+    font-size:13px;
+}
+
+.sensi-value{
+    color:#ff003c;
+    font-size:29px;
+    font-weight:900;
+    margin-top:5px;
+}
+
+.adjust{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    margin-top:18px;
+}
+
+.adjust button{
+    background:#242424;
+    padding:11px 5px;
+    border-radius:9px;
+}
+
+.adjust button:hover{
+    background:#ff003c;
+}
+
+.copy{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border-radius:11px;
+    background:#ff003c;
+}
+
+.reset{
+    width:100%;
+    padding:13px;
+    margin-top:9px;
+    border-radius:11px;
+    background:#222;
+}
+
+.tag{
+    display:inline-block;
+    background:#21000a;
+    color:#ff4770;
+    border:1px solid #ff003c55;
+    padding:7px 10px;
+    border-radius:20px;
+    font-size:12px;
+    margin:3px;
 }
 
 footer{
-  text-align:center;
-  color:#666;
-  padding:30px 15px;
-  font-size:13px;
+    text-align:center;
+    color:#666;
+    font-size:12px;
+    padding:20px;
 }
 
-@media(max-width:500px){
+@media(max-width:520px){
+    header h1{
+        font-size:23px;
+    }
 
-  .phone-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .card{
+        padding:16px;
+    }
 
-  .options{
-    grid-template-columns:1fr;
-  }
+    .sensi-grid{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .options.two{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .sensi-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .adjust-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .sensi-value{
+        font-size:25px;
+    }
 }
 </style>
 </head>
@@ -304,837 +242,708 @@ footer{
 <body>
 
 <header>
-  <div class="logo">🔥 SYSTEM HANS IA</div>
-  <p>SENSIBILIDADES FF • GENERADOR 2.0</p>
+    <h1>SYSTEM HANS IA</h1>
+    <p>SENSIS FF • GENERADOR INTELIGENTE</p>
 </header>
 
-<main class="container">
+<div class="container">
 
-  <!-- PASO 1 -->
+    <div class="card">
 
-  <section class="card">
+        <div class="title">⚙️ Configura tu sensibilidad</div>
 
-    <div class="title">
-      📱 1. Selecciona tu celular
-    </div>
+        <label for="phone">📱 Tu teléfono</label>
 
-    <input
-      id="search"
-      class="search"
-      type="text"
-      placeholder="🔎 Buscar modelo..."
-      oninput="searchPhones()"
-    >
+        <input
+            id="phone"
+            list="phones"
+            placeholder="Escribe tu modelo..."
+        >
 
-    <div id="phones" class="phone-grid"></div>
+        <datalist id="phones">
 
-  </section>
+            <!-- Motorola -->
+            <option value="Motorola Edge 50 Fusion">
+            <option value="Motorola Edge 50 Pro">
+            <option value="Motorola Edge 40">
+            <option value="Motorola Edge 40 Neo">
+            <option value="Motorola Moto G84">
+            <option value="Motorola Moto G54">
+            <option value="Motorola Moto G73">
+            <option value="Motorola Moto G53">
+            <option value="Motorola Moto G32">
 
+            <!-- Samsung -->
+            <option value="Samsung Galaxy S24">
+            <option value="Samsung Galaxy S23">
+            <option value="Samsung Galaxy S22">
+            <option value="Samsung Galaxy A55">
+            <option value="Samsung Galaxy A54">
+            <option value="Samsung Galaxy A35">
+            <option value="Samsung Galaxy A34">
+            <option value="Samsung Galaxy A25">
+            <option value="Samsung Galaxy A15">
+            <option value="Samsung Galaxy A14">
 
-  <!-- PASO 2 -->
+            <!-- Xiaomi / Redmi -->
+            <option value="Xiaomi 14">
+            <option value="Xiaomi 13">
+            <option value="Xiaomi 12">
+            <option value="Redmi Note 13 Pro">
+            <option value="Redmi Note 13">
+            <option value="Redmi Note 12 Pro">
+            <option value="Redmi Note 12">
+            <option value="Redmi Note 11 Pro">
+            <option value="Redmi Note 11">
+            <option value="Redmi Note 10 Pro">
+            <option value="Redmi Note 10">
 
-  <section class="card">
+            <!-- POCO -->
+            <option value="POCO F6">
+            <option value="POCO F5">
+            <option value="POCO X6 Pro">
+            <option value="POCO X6">
+            <option value="POCO X5 Pro">
+            <option value="POCO X5">
+            <option value="POCO M6 Pro">
 
-    <div class="title">
-      🎮 2. ¿Cómo quieres la sensibilidad?
-    </div>
+            <!-- Realme -->
+            <option value="Realme GT 6">
+            <option value="Realme GT Neo 5">
+            <option value="Realme 12 Pro+">
+            <option value="Realme 11 Pro">
+            <option value="Realme C67">
 
-    <div class="options">
+            <!-- Honor -->
+            <option value="Honor 200">
+            <option value="Honor 90">
+            <option value="Honor X8b">
+            <option value="Honor X7b">
 
-      <button
-        class="option"
-        onclick="selectOption('style','rapida',this)"
-      >
-        ⚡ Rápida
-      </button>
+            <!-- Huawei -->
+            <option value="Huawei Nova 12">
+            <option value="Huawei Nova 11">
+            <option value="Huawei P60">
 
-      <button
-        class="option active"
-        onclick="selectOption('style','equilibrada',this)"
-      >
-        🎯 Equilibrada
-      </button>
+            <!-- iPhone -->
+            <option value="iPhone 15 Pro Max">
+            <option value="iPhone 15 Pro">
+            <option value="iPhone 15">
+            <option value="iPhone 14 Pro Max">
+            <option value="iPhone 14">
+            <option value="iPhone 13">
+            <option value="iPhone 12">
+            <option value="iPhone 11">
 
-      <button
-        class="option"
-        onclick="selectOption('style','controlada',this)"
-      >
-        🛡️ Controlada
-      </button>
+        </datalist>
 
-    </div>
+        <label for="style">⚡ Estilo de juego</label>
 
-  </section>
+        <select id="style">
+            <option value="rapida">Rápida</option>
+            <option value="equilibrada" selected>Equilibrada</option>
+            <option value="controlada">Controlada</option>
+        </select>
 
+        <label for="fingers">👆 Cantidad de dedos</label>
 
-  <!-- PASO 3 -->
+        <select id="fingers">
+            <option value="2">2 dedos</option>
+            <option value="3">3 dedos</option>
+            <option value="4">4 dedos</option>
+        </select>
 
-  <section class="card">
+        <label for="problem">🎯 ¿Qué pasa con tu mira?</label>
 
-    <div class="title">
-      🖐️ 3. ¿Cuántos dedos utilizas?
-    </div>
+        <select id="problem">
+            <option value="normal">Normal</option>
+            <option value="over">Se pasa de la cabeza</option>
+            <option value="under">No llega a la cabeza</option>
+            <option value="shake">Tiembla mucho</option>
+        </select>
 
-    <div class="options">
+        <button class="main-btn" onclick="generate()">
+            🔥 GENERAR MI SENSI
+        </button>
 
-      <button
-        class="option active"
-        onclick="selectOption('fingers',2,this)"
-      >
-        2 dedos
-      </button>
-
-      <button
-        class="option"
-        onclick="selectOption('fingers',3,this)"
-      >
-        3 dedos
-      </button>
-
-      <button
-        class="option"
-        onclick="selectOption('fingers',4,this)"
-      >
-        4 dedos
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- PASO 4 -->
-
-  <section class="card">
-
-    <div class="title">
-      🎯 4. ¿Qué pasa con tu mira?
-    </div>
-
-    <div class="options two">
-
-      <button
-        class="option active"
-        onclick="selectOption('problem','normal',this)"
-      >
-        ✅ Normal
-      </button>
-
-      <button
-        class="option"
-        onclick="selectOption('problem','pasa',this)"
-      >
-        ⬆️ Se pasa
-      </button>
-
-      <button
-        class="option"
-        onclick="selectOption('problem','corta',this)"
-      >
-        ⬇️ Se queda corta
-      </button>
-
-      <button
-        class="option"
-        onclick="selectOption('problem','tiembla',this)"
-      >
-        〰️ Tiembla
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- GENERAR -->
-
-  <section class="card">
-
-    <button
-      class="generate"
-      onclick="generateSensitivity()"
-    >
-      🔥 GENERAR MI SENSI
-    </button>
-
-  </section>
-
-
-  <!-- ANALIZANDO -->
-
-  <section
-    id="loading"
-    class="card loading hidden"
-  >
-
-    <div class="loader"></div>
-
-    <h2>⚡ ANALIZANDO...</h2>
-
-    <p id="loadingText">
-      SYSTEM HANS IA está preparando tu configuración.
-    </p>
-
-  </section>
-
-
-  <!-- RESULTADO -->
-
-  <section
-    id="result"
-    class="card hidden"
-  >
-
-    <div class="result-header">
-
-      <h2>🔥 TU SENSI ESTÁ LISTA</h2>
-
-      <p id="deviceResult">
-        Dispositivo
-      </p>
+        <div class="info">
+            Esta configuración es un punto de partida. La respuesta puede variar
+            según pantalla, tacto, HUD y forma de jugar.
+        </div>
 
     </div>
 
 
-    <div class="sensi-grid">
+    <div class="card loading" id="loading">
 
-      <div class="sensi-box">
-        <small>General</small>
-        <strong id="general">0</strong>
-      </div>
+        <div class="spinner"></div>
 
-      <div class="sensi-box">
-        <small>Punto rojo</small>
-        <strong id="redDot">0</strong>
-      </div>
+        <h3>SYSTEM HANS IA</h3>
 
-      <div class="sensi-box">
-        <small>Mira 2X</small>
-        <strong id="scope2">0</strong>
-      </div>
-
-      <div class="sensi-box">
-        <small>Mira 4X</small>
-        <strong id="scope4">0</strong>
-      </div>
-
-      <div class="sensi-box">
-        <small>Francotirador</small>
-        <strong id="sniper">0</strong>
-      </div>
-
-      <div class="sensi-box">
-        <small>Cámara libre</small>
-        <strong id="free">0</strong>
-      </div>
+        <p style="color:#aaa;margin-top:6px;">
+            Analizando tu dispositivo...
+        </p>
 
     </div>
 
 
-    <div class="adjust-title">
-      ⚙️ Ajuste rápido
+    <div class="card result" id="result">
+
+        <h2>🔥 Tu configuración</h2>
+
+        <div class="result-sub" id="resultInfo"></div>
+
+        <div id="tags"></div>
+
+        <div class="sensi-grid">
+
+            <div class="sensi">
+                <div class="sensi-name">General</div>
+                <div class="sensi-value" id="general">0</div>
+            </div>
+
+            <div class="sensi">
+                <div class="sensi-name">Punto rojo</div>
+                <div class="sensi-value" id="red">0</div>
+            </div>
+
+            <div class="sensi">
+                <div class="sensi-name">Mira 2X</div>
+                <div class="sensi-value" id="x2">0</div>
+            </div>
+
+            <div class="sensi">
+                <div class="sensi-name">Mira 4X</div>
+                <div class="sensi-value" id="x4">0</div>
+            </div>
+
+            <div class="sensi">
+                <div class="sensi-name">Francotirador</div>
+                <div class="sensi-value" id="sniper">0</div>
+            </div>
+
+            <div class="sensi">
+                <div class="sensi-name">Cámara libre</div>
+                <div class="sensi-value" id="free">0</div>
+            </div>
+
+        </div>
+
+        <div class="adjust">
+
+            <button onclick="adjust(-5)">-5</button>
+            <button onclick="adjust(-2)">-2</button>
+            <button onclick="adjust(2)">+2</button>
+            <button onclick="adjust(5)">+5</button>
+
+        </div>
+
+        <button class="copy" onclick="copySensi()">
+            📋 COPIAR CONFIGURACIÓN
+        </button>
+
+        <button class="reset" onclick="generate()">
+            🔄 GENERAR OTRA VEZ
+        </button>
+
     </div>
 
-    <div class="adjust-grid">
-
-      <button class="adjust" onclick="adjust(-5)">
-        -5
-      </button>
-
-      <button class="adjust" onclick="adjust(-2)">
-        -2
-      </button>
-
-      <button class="adjust" onclick="adjust(2)">
-        +2
-      </button>
-
-      <button class="adjust" onclick="adjust(5)">
-        +5
-      </button>
-
-    </div>
-
-
-    <button
-      class="copy"
-      onclick="copySensitivity()"
-    >
-      📋 COPIAR SENSIBILIDAD
-    </button>
-
-
-    <button
-      class="reset"
-      onclick="newSensitivity()"
-    >
-      🔄 GENERAR OTRA
-    </button>
-
-
-    <p class="info">
-      Esta configuración es una recomendación inicial.
-      La respuesta puede variar según el dispositivo,
-      configuración táctil y estilo de juego. Haz cambios
-      pequeños después de probarla.
-    </p>
-
-  </section>
-
-</main>
-
+</div>
 
 <footer>
-  SYSTEM HANS IA 🔥<br>
-  Sensibilidades FF • Generador personalizado
+    SYSTEM HANS IA • Sensibilidad personalizada para Free Fire
 </footer>
 
 
 <script>
 
-/* =========================
-   DATOS
-========================= */
-
-const phones = [
-
-"Redmi Note 10 Pro",
-"Redmi Note 11",
-"Redmi Note 12",
-"Redmi Note 13",
-"Redmi Note 13 Pro",
-"Redmi Note 14",
-
-"POCO X3 Pro",
-"POCO X4 Pro",
-"POCO X5 Pro",
-"POCO X6 Pro",
-"POCO F3",
-"POCO F4",
-"POCO F5",
-
-"Samsung A12",
-"Samsung A13",
-"Samsung A14",
-"Samsung A15",
-"Samsung A24",
-"Samsung A25",
-"Samsung A34",
-"Samsung A35",
-"Samsung A54",
-"Samsung S21",
-"Samsung S22",
-"Samsung S23",
-"Samsung S24",
-
-"iPhone 11",
-"iPhone 12",
-"iPhone 13",
-"iPhone 14",
-"iPhone 15",
-"iPhone 16",
-
-"Realme C55",
-"Realme C67",
-"Realme 10",
-"Realme 11",
-
-"Motorola G54",
-"Motorola G84",
-"Motorola Edge 40",
-
-"Infinix Hot 30",
-"Infinix Hot 40",
-"Tecno Pova 5",
-"Tecno Pova 6"
-
-];
+let current = {
+    general:0,
+    red:0,
+    x2:0,
+    x4:0,
+    sniper:0,
+    free:0
+};
 
 
-/* =========================
-   ESTADO
-========================= */
+/*
+==================================================
+PERFILES DE DISPOSITIVOS
+==================================================
+*/
 
-let selectedPhone = "";
+const devices = {
 
-let settings = {
+    "Motorola Edge 50 Fusion":{
+        base:190,
+        touch:5
+    },
 
-  style:"equilibrada",
+    "Motorola Edge 50 Pro":{
+        base:188,
+        touch:6
+    },
 
-  fingers:2,
+    "Motorola Edge 40":{
+        base:184,
+        touch:5
+    },
 
-  problem:"normal"
+    "Motorola Edge 40 Neo":{
+        base:182,
+        touch:4
+    },
+
+    "Redmi Note 10 Pro":{
+        base:184,
+        touch:4
+    },
+
+    "Redmi Note 13 Pro":{
+        base:188,
+        touch:5
+    },
+
+    "Redmi Note 13":{
+        base:184,
+        touch:4
+    },
+
+    "Redmi Note 12 Pro":{
+        base:186,
+        touch:5
+    },
+
+    "POCO F6":{
+        base:190,
+        touch:6
+    },
+
+    "POCO F5":{
+        base:188,
+        touch:6
+    },
+
+    "POCO X6 Pro":{
+        base:189,
+        touch:6
+    },
+
+    "Samsung Galaxy S24":{
+        base:188,
+        touch:6
+    },
+
+    "Samsung Galaxy S23":{
+        base:187,
+        touch:6
+    },
+
+    "Samsung Galaxy A55":{
+        base:180,
+        touch:4
+    },
+
+    "Samsung Galaxy A54":{
+        base:178,
+        touch:4
+    },
+
+    "Samsung Galaxy A35":{
+        base:179,
+        touch:4
+    },
+
+    "iPhone 15 Pro Max":{
+        base:184,
+        touch:6
+    },
+
+    "iPhone 15 Pro":{
+        base:184,
+        touch:6
+    },
+
+    "iPhone 15":{
+        base:182,
+        touch:5
+    },
+
+    "iPhone 14":{
+        base:181,
+        touch:5
+    },
+
+    "iPhone 13":{
+        base:180,
+        touch:5
+    },
+
+    "Realme GT 6":{
+        base:190,
+        touch:6
+    },
+
+    "Realme GT Neo 5":{
+        base:190,
+        touch:6
+    },
+
+    "Honor 200":{
+        base:187,
+        touch:5
+    },
+
+    "Honor 90":{
+        base:185,
+        touch:5
+    }
 
 };
 
 
-let sensitivity = {
+/*
+==================================================
+GENERADOR
+==================================================
+*/
 
-  general:90,
+function generate(){
 
-  redDot:85,
+    const phone =
+        document.getElementById("phone").value.trim();
 
-  scope2:80,
+    const style =
+        document.getElementById("style").value;
 
-  scope4:75,
+    const fingers =
+        parseInt(document.getElementById("fingers").value);
 
-  sniper:55,
-
-  free:70
-
-};
+    const problem =
+        document.getElementById("problem").value;
 
 
-/* =========================
-   MOSTRAR CELULARES
-========================= */
+    document.getElementById("result").style.display="none";
 
-function renderPhones(list=phones){
+    document.getElementById("loading").style.display="block";
 
-  const container =
-    document.getElementById("phones");
 
-  container.innerHTML="";
+    setTimeout(()=>{
 
-  list.forEach(phone=>{
+        let device =
+            devices[phone] || {
+                base:182,
+                touch:4
+            };
 
-    const button =
-      document.createElement("button");
 
-    button.className="option";
+        let base = device.base;
 
-    button.textContent=phone;
 
-    button.onclick=()=>{
+        /*
+        ESTILO
+        */
 
-      document
-        .querySelectorAll("#phones .option")
-        .forEach(btn=>{
-          btn.classList.remove("active");
-        });
+        if(style === "rapida"){
+            base += 7;
+        }
 
-      button.classList.add("active");
+        if(style === "controlada"){
+            base -= 8;
+        }
 
-      selectedPhone=phone;
 
-    };
+        /*
+        DEDOS
+        */
 
-    container.appendChild(button);
+        if(fingers === 2){
+            base += 3;
+        }
 
-  });
+        if(fingers === 4){
+            base -= 3;
+        }
+
+
+        /*
+        PROBLEMA
+        */
+
+        if(problem === "over"){
+            base -= 10;
+        }
+
+        if(problem === "under"){
+            base += 10;
+        }
+
+        if(problem === "shake"){
+            base -= 8;
+        }
+
+
+        /*
+        LÍMITES
+        */
+
+        base =
+            Math.max(120,Math.min(200,base));
+
+
+        /*
+        CREAR SENSIBILIDADES
+        */
+
+        current.general = base;
+
+        current.red =
+            clamp(base - 4);
+
+        current.x2 =
+            clamp(base - 13);
+
+        current.x4 =
+            clamp(base - 25);
+
+        current.sniper =
+            clamp(base - 38);
+
+        current.free =
+            clamp(base + 2);
+
+
+        render(phone,style,fingers,problem);
+
+
+        localStorage.setItem(
+            "systemHansSensi",
+            JSON.stringify({
+                phone,
+                style,
+                fingers,
+                problem,
+                values:current
+            })
+        );
+
+
+        document.getElementById("loading").style.display="none";
+
+        document.getElementById("result").style.display="block";
+
+
+    },900);
 
 }
 
 
-/* =========================
-   BUSCADOR
-========================= */
+/*
+==================================================
+LÍMITES
+==================================================
+*/
 
-function searchPhones(){
+function clamp(value){
 
-  const query =
-    document
-      .getElementById("search")
-      .value
-      .toLowerCase()
-      .trim();
-
-  const filtered =
-    phones.filter(phone=>
-      phone.toLowerCase().includes(query)
+    return Math.max(
+        0,
+        Math.min(200,Math.round(value))
     );
 
-  renderPhones(filtered);
+}
+
+
+/*
+==================================================
+MOSTRAR RESULTADO
+==================================================
+*/
+
+function render(phone,style,fingers,problem){
+
+    document.getElementById("general").textContent =
+        current.general;
+
+    document.getElementById("red").textContent =
+        current.red;
+
+    document.getElementById("x2").textContent =
+        current.x2;
+
+    document.getElementById("x4").textContent =
+        current.x4;
+
+    document.getElementById("sniper").textContent =
+        current.sniper;
+
+    document.getElementById("free").textContent =
+        current.free;
+
+
+    const styleName = {
+        rapida:"Rápida",
+        equilibrada:"Equilibrada",
+        controlada:"Controlada"
+    }[style];
+
+
+    const problemName = {
+        normal:"Normal",
+        over:"Se pasa de la cabeza",
+        under:"No llega a la cabeza",
+        shake:"Tiembla mucho"
+    }[problem];
+
+
+    document.getElementById("resultInfo").textContent =
+        `${phone || "Dispositivo personalizado"} • ${styleName} • ${fingers} dedos • ${problemName}`;
+
+
+    document.getElementById("tags").innerHTML = `
+        <span class="tag">SYSTEM HANS IA</span>
+        <span class="tag">${styleName}</span>
+        <span class="tag">${fingers} dedos</span>
+    `;
 
 }
 
 
-/* =========================
-   SELECCIONES
-========================= */
-
-function selectOption(type,value,button){
-
-  settings[type]=value;
-
-  button.parentElement
-    .querySelectorAll(".option")
-    .forEach(btn=>{
-      btn.classList.remove("active");
-    });
-
-  button.classList.add("active");
-
-}
-
-
-/* =========================
-   GENERADOR
-========================= */
-
-function generateSensitivity(){
-
-  if(!selectedPhone){
-
-    alert("📱 Primero selecciona tu celular.");
-
-    return;
-
-  }
-
-
-  document
-    .getElementById("result")
-    .classList.add("hidden");
-
-  document
-    .getElementById("loading")
-    .classList.remove("hidden");
-
-
-  const messages=[
-
-    "Analizando dispositivo...",
-
-    "Calculando respuesta táctil...",
-
-    "Ajustando sensibilidad...",
-
-    "Preparando configuración..."
-
-  ];
-
-
-  let index=0;
-
-  const text =
-    document.getElementById("loadingText");
-
-
-  const interval =
-    setInterval(()=>{
-
-      text.textContent=
-        messages[index];
-
-      index++;
-
-      if(index>=messages.length){
-
-        clearInterval(interval);
-
-      }
-
-    },450);
-
-
-  setTimeout(()=>{
-
-    createSensitivity();
-
-    document
-      .getElementById("loading")
-      .classList.add("hidden");
-
-    document
-      .getElementById("result")
-      .classList.remove("hidden");
-
-    document
-      .getElementById("result")
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  },1900);
-
-}
-
-
-/* =========================
-   CREAR SENSI
-========================= */
-
-function createSensitivity(){
-
-  let base=88;
-
-
-  /* ESTILO */
-
-  if(settings.style==="rapida")
-    base+=7;
-
-  if(settings.style==="controlada")
-    base-=8;
-
-
-  /* DEDOS */
-
-  if(settings.fingers===3)
-    base+=2;
-
-  if(settings.fingers===4)
-    base+=4;
-
-
-  /* PROBLEMA */
-
-  if(settings.problem==="pasa")
-    base-=6;
-
-  if(settings.problem==="corta")
-    base+=5;
-
-  if(settings.problem==="tiembla")
-    base-=4;
-
-
-  sensitivity.general=base;
-
-  sensitivity.redDot=base-4;
-
-  sensitivity.scope2=base-9;
-
-  sensitivity.scope4=base-14;
-
-  sensitivity.sniper=base-31;
-
-  sensitivity.free=base-18;
-
-
-  limitValues();
-
-  updateResult();
-
-
-  document
-    .getElementById("deviceResult")
-    .textContent=
-      "📱 "+selectedPhone+
-      " • "+
-      settings.fingers+
-      " dedos";
-
-
-  saveData();
-
-}
-
-
-/* =========================
-   LIMITAR
-========================= */
-
-function limitValues(){
-
-  Object.keys(sensitivity)
-    .forEach(key=>{
-
-      sensitivity[key]=Math.max(
-        0,
-        Math.min(
-          100,
-          Math.round(sensitivity[key])
-        )
-      );
-
-    });
-
-}
-
-
-/* =========================
-   ACTUALIZAR RESULTADO
-========================= */
-
-function updateResult(){
-
-  document
-    .getElementById("general")
-    .textContent=
-      sensitivity.general;
-
-  document
-    .getElementById("redDot")
-    .textContent=
-      sensitivity.redDot;
-
-  document
-    .getElementById("scope2")
-    .textContent=
-      sensitivity.scope2;
-
-  document
-    .getElementById("scope4")
-    .textContent=
-      sensitivity.scope4;
-
-  document
-    .getElementById("sniper")
-    .textContent=
-      sensitivity.sniper;
-
-  document
-    .getElementById("free")
-    .textContent=
-      sensitivity.free;
-
-}
-
-
-/* =========================
-   AJUSTAR
-========================= */
+/*
+==================================================
+AJUSTAR
+==================================================
+*/
 
 function adjust(amount){
 
-  sensitivity.general+=amount;
+    current.general = clamp(current.general + amount);
+    current.red = clamp(current.red + amount);
+    current.x2 = clamp(current.x2 + amount);
+    current.x4 = clamp(current.x4 + amount);
+    current.sniper = clamp(current.sniper + amount);
+    current.free = clamp(current.free + amount);
 
-  sensitivity.redDot+=amount;
-
-  sensitivity.scope2+=amount;
-
-  sensitivity.scope4+=amount;
-
-
-  limitValues();
-
-  updateResult();
-
-  saveData();
+    renderCurrent();
 
 }
 
 
-/* =========================
-   COPIAR
-========================= */
+function renderCurrent(){
 
-function copySensitivity(){
+    document.getElementById("general").textContent =
+        current.general;
 
-  const text=
-`🔥 SYSTEM HANS IA
+    document.getElementById("red").textContent =
+        current.red;
 
-📱 ${selectedPhone}
+    document.getElementById("x2").textContent =
+        current.x2;
 
-General: ${sensitivity.general}
-Punto rojo: ${sensitivity.redDot}
-Mira 2X: ${sensitivity.scope2}
-Mira 4X: ${sensitivity.scope4}
-Francotirador: ${sensitivity.sniper}
-Cámara libre: ${sensitivity.free}`;
+    document.getElementById("x4").textContent =
+        current.x4;
 
-  navigator
-    .clipboard
-    .writeText(text)
+    document.getElementById("sniper").textContent =
+        current.sniper;
+
+    document.getElementById("free").textContent =
+        current.free;
+
+}
+
+
+/*
+==================================================
+COPIAR
+==================================================
+*/
+
+function copySensi(){
+
+    const text =
+`SYSTEM HANS IA
+
+General: ${current.general}
+Punto rojo: ${current.red}
+2X: ${current.x2}
+4X: ${current.x4}
+Francotirador: ${current.sniper}
+Cámara libre: ${current.free}`;
+
+
+    navigator.clipboard.writeText(text)
     .then(()=>{
 
-      alert(
-        "✅ Sensibilidad copiada."
-      );
+        alert("✅ Configuración copiada");
 
     })
     .catch(()=>{
 
-      alert(
-        "No se pudo copiar automáticamente."
-      );
+        alert("No se pudo copiar automáticamente.");
 
     });
 
 }
 
 
-/* =========================
-   NUEVA SENSI
-========================= */
+/*
+==================================================
+RECUPERAR ÚLTIMA CONFIGURACIÓN
+==================================================
+*/
 
-function newSensitivity(){
+window.addEventListener("load",()=>{
 
-  document
-    .getElementById("result")
-    .classList.add("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
+    const saved =
+        localStorage.getItem("systemHansSensi");
 
 
-/* =========================
-   GUARDAR
-========================= */
-
-function saveData(){
-
-  const data={
-
-    phone:selectedPhone,
-
-    settings:settings,
-
-    sensitivity:sensitivity
-
-  };
-
-  localStorage.setItem(
-    "systemHansIA",
-    JSON.stringify(data)
-  );
-
-}
+    if(!saved) return;
 
 
-/* =========================
-   CARGAR
-========================= */
+    try{
 
-function loadData(){
-
-  const saved=
-    localStorage.getItem(
-      "systemHansIA"
-    );
-
-  if(!saved)return;
-
-  try{
-
-    const data=
-      JSON.parse(saved);
-
-    if(data.phone)
-      selectedPhone=data.phone;
-
-    if(data.settings)
-      settings=data.settings;
-
-    if(data.sensitivity)
-      sensitivity=data.sensitivity;
-
-  }catch(error){
-
-    console.log(
-      "No se pudo cargar la configuración."
-    );
-
-  }
-
-}
+        const data =
+            JSON.parse(saved);
 
 
-/* =========================
-   INICIO
-========================= */
+        if(data.phone)
+            document.getElementById("phone").value =
+                data.phone;
 
-loadData();
 
-renderPhones();
+        if(data.style)
+            document.getElementById("style").value =
+                data.style;
+
+
+        if(data.fingers)
+            document.getElementById("fingers").value =
+                data.fingers;
+
+
+        if(data.problem)
+            document.getElementById("problem").value =
+                data.problem;
+
+
+        if(data.values){
+
+            current =
+                data.values;
+
+        }
+
+    }catch(e){
+
+        console.log("No se pudo recuperar la configuración.");
+
+    }
+
+});
 
 </script>
 
 </body>
-    </html>
+  </html>
